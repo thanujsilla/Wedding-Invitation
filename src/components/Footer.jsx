@@ -16,15 +16,15 @@ export default function Footer() {
         Your presence will turn this real-life romance into a blockbuster we’ll never forget.
       </motion.p>
       <motion.p className="foot-quote sm" {...line(0.2)}>
-        Come, dance, laugh, and celebrate with us in Bollywood style!
+        Come, dance, laugh, and celebrate with us !
       </motion.p>
       <motion.div className="foot-rule" {...line(0.35)}><i>✦</i></motion.div>
       <motion.p className="foot-with" {...line(0.45)}>With love &amp; blessings</motion.p>
       <motion.p className="foot-fam" {...line(0.55)}>
-        Mrs. Anjana &amp; Mr. Santosh Sahu<br />and families
+        {COUPLE.brideParents}<br />{COUPLE.groomParents}
       </motion.p>
-      <motion.h3 className="foot-names" {...line(0.7)}>{COUPLE.bride} <em>&amp;</em> {COUPLE.groom}</motion.h3>
-      <motion.p className="foot-craft" {...line(0.9)}>Crafted with <span className="heartbeat">♥</span> by INVIFEST</motion.p>
+      <motion.h3 className="foot-names" {...line(0.7)}><span className="nw">{COUPLE.bride} <em>&amp;</em></span> <span className="nw">{COUPLE.groom}</span></motion.h3>
+      <motion.p className="foot-craft" {...line(0.9)}> <span className="heartbeat">♥</span> </motion.p>
     </footer>
   );
 }

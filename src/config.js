@@ -5,146 +5,44 @@
 export const COUPLE = {
   bride: 'Yamini',
   groom: 'Nayan Raju',
-  brideParents: 'Mr.Ravi Kumar & Mrs.Nagamani',
-  groomParents: 'Mr.Lokanatham & Mrs.ABCDEF',
+  brideParents: 'Nagamani & Ravi Kumar',
+  groomParents: 'ABCDEF & Dr. Lokanatham', // ← replace ABCDEF with the real name
 };
 
-// Countdown target (IST). NOTE: if this moment has already passed the
-// countdown shows zeros and a gentle "celebrations have begun" line.
-export const WEDDING_DATE = new Date('2026-12-13T11:00:00+05:30');
+// Telugu blessing shown at the top of the invitation
+export const BLESSING_TELUGU = 'శ్రీ గణేశాయ నమః';
 
-export const SAVE_THE_DATE = { month: 'DECEMEBR', day: '13', year: '2026' };
+// Ganesh photo: put your image at public/images/ganesh.png (or .jpg and change this path).
+// Until the file exists, a hand-drawn Ganesha illustration is shown instead.
+export const GANESH = { src: '/images/ganesh.png' };
+
+// Countdown target (IST). 13 December 2026 — change the time if you have the muhurtham.
+export const WEDDING_DATE = new Date('2026-12-13T00:00:00+05:30');
+
+export const SAVE_THE_DATE = { month: 'DECEMBER', day: '13', year: '2026', caption: 'Sunday · the thirteenth of December' };
 
 export const VENUE = {
-  name: 'Rajalakshmi Kalyana Mandapam',
-  address: ['No. 205/1, Velachery Main Road, Dhandeeswaram,', 'Velachery, Chennai, Tamil Nadu — 600042'],
+  name: 'Anandamayi Function Hall',
+  address: ['Mill Junction , 80 Feet Road , Arasavilli , Srikakulam'],
   mapsUrl:
-    'https://www.google.com/maps/search/?api=1&query=Rajalakshmi+Kalyana+Mandapam+Velachery+Chennai',
+    'https://www.google.com/search?client=ms-android-motorola-rvo3&hs=Ymkq&sca_esv=0822aa61e3658205&hl=en-IN&cs=1&sxsrf=APpeQntdLgVYv4JxLZx0gaWznzab6k-AkQ%3A1791138574440&kgmid=%2Fg%2F11ybhvb5vm&q=Anandamayi%20convention%20hall&shem=epsd1%2Cltae%2Crimspwouoe&shndl=30&source=sh%2Fx%2Floc%2Ftile%2Fm1%2F4&kgs=50ab9dcea178de44',
 };
 
 const RESORT = 'Accord Wildlife Pench Resort';
 const mapsFor = (q) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
 
+// NOTE: event names / times / places below are still the sample ones — edit them.
 export const EVENTS = [
-  {
-    id: 'sangeet',
-    name: 'Sangeet Night',
-    day: 'Tuesday',
-    date: '30 Jun 2026',
-    short: 'JUNE 30',
-    time: '7:00 PM',
-    quote: 'An evening of music, dance, and celebration.',
-    dress: { colors: ['#6e1a26', '#c9a04a', '#f4ead6'], names: 'Maroon · Gold · Cream', style: 'Traditional Indian / Indo-western' },
-    place: null,
-  },
-  {
-    id: 'afterparty',
-    name: 'After Party',
-    day: 'Tuesday',
-    date: '30 Jun 2026',
-    short: 'JUNE 30',
-    time: '11:00 PM',
-    quote: 'Let your hair down and party till the stars fade.',
-    dress: null,
-    place: `${RESORT} · The Lounge`,
-    maps: mapsFor(RESORT),
-  },
-  {
-    id: 'carnival',
-    name: 'Carnival',
-    day: 'Wednesday',
-    date: '1 Jul 2026',
-    short: 'JULY 1',
-    time: '11:00 AM',
-    quote: 'A vibrant burst of colors, games, and laughter.',
-    dress: { colors: ['#f2a7b8', '#f6c3a0', '#b9e0c8'], names: 'Pastel Pink · Peach · Mint', style: 'Comfortable & breezy daywear' },
-    place: `${RESORT} · Poolside Lawn`,
-    maps: mapsFor(RESORT),
-  },
-  {
-    id: 'shera',
-    name: 'Shera Bandi',
-    day: 'Wednesday',
-    date: '1 Jul 2026',
-    short: 'JULY 1',
-    time: '5:00 PM',
-    quote: 'The groom’s royal procession begins.',
-    dress: { colors: ['#e0752b', '#d9a93a', '#f4ead6'], names: 'Saffron · Marigold · Ivory', style: 'Festive ethnic' },
-    place: `${RESORT} · Main Entrance`,
-    maps: mapsFor(RESORT),
-  },
-  {
-    id: 'reception',
-    name: 'Reception',
-    day: 'Wednesday',
-    date: '1 Jul 2026',
-    short: 'JULY 1',
-    time: '7:00 PM',
-    quote: 'Family, love, and shaadi — full filmy package.',
-    dress: { colors: ['#14204f', '#c9a04a'], names: 'Navy · Gold', style: 'Cocktail formal' },
-    place: `${RESORT} · Grand Ballroom`,
-    maps: mapsFor(RESORT),
-  },
+  { id: 'sangeet', name: 'Sangeet Night', day: 'Saturday', date: '12 Dec 2026', short: 'DEC 12', time: '7:00 PM', quote: 'An evening of music, dance, and celebration.', place: null },
+  { id: 'afterparty', name: 'Alaka Sambaram', day: 'Saturday', date: '12 Dec 2026', short: 'DEC 12', time: '11:00 PM', quote: 'Let your hair down and party till the stars fade.', place: `${RESORT} · The Lounge`, maps: mapsFor(RESORT) },
+  { id: 'carnival', name: 'Godumu rayi', day: 'Sunday', date: '13 Dec 2026', short: 'DEC 13', time: '11:00 AM', quote: 'A vibrant burst of colors, games, and laughter.', place: `${RESORT} · Poolside Lawn`, maps: mapsFor(RESORT) },
+  { id: 'shera', name: 'Haldi Function', day: 'Sunday', date: '13 Dec 2026', short: 'DEC 13', time: '5:00 PM', quote: 'The groom’s royal procession begins.', place: `${RESORT} · Main Entrance`, maps: mapsFor(RESORT) },
+  { id: 'reception', name: 'Reception', day: 'Sunday', date: '13 Dec 2026', short: 'DEC 13', time: '7:00 PM', quote: 'Family, love, and shaadi — full filmy package.', place: `${RESORT} · Grand Ballroom`, maps: mapsFor(RESORT) },
 ];
 
-export const DRESS_CODE = {
-  palette: [
-    { name: 'Maroon', color: '#7d1a24' },
-    { name: 'Gold', color: '#c9a04a' },
-    { name: 'Ivory', color: '#f6efe0' },
-  ],
-  style: 'Traditional Indian',
-  pieces: ['Sarees', 'Lehengas', 'Sherwanis'],
-  mapsUrl: mapsFor(RESORT),
-};
+// Replace `src: null` with e.g. '/photos/venue.jpg' (put files in /public/photos)
+export const PHOTOS = { venue: { src: null } };
 
-// Replace `src: null` with e.g. '/photos/us-1.jpg' (put files in /public/photos)
-export const PHOTOS = {
-  hero: { src: null, caption: 'Memories together…' },
-  stack: [
-    { src: null, caption: 'Where it all began', tilt: -7 },
-    { src: null, caption: 'Chai, chaos & us', tilt: 5 },
-    { src: null, caption: 'Forever starts here', tilt: -2 },
-  ],
-  venue: { src: null },
-};
-
-export const SONGS = [
-  ['Kala Chashma', 'Amar Arshi, Badshah, Neha Kakkar'],
-  ['Kala', 'Danheim'],
-  ['Kala Sha Kala', 'Om Prakash'],
-  ['Chaiyya Chaiyya', 'Sukhwinder Singh, Sapna Awasthi'],
-  ['Gallan Goodiyan', 'Shankar Mahadevan, Yashita Sharma'],
-  ['London Thumakda', 'Labh Janjua, Sonu Kakkar, Neha Kakkar'],
-  ['Balam Pichkari', 'Vishal Dadlani, Shalmali Kholgade'],
-  ['Badtameez Dil', 'Benny Dayal'],
-  ['Nashe Si Chadh Gayi', 'Arijit Singh'],
-  ['Kar Gayi Chull', 'Badshah, Neha Kakkar, Fazilpuria'],
-  ['Subha Hone Na De', 'Mika Singh, Pritam'],
-  ['Tenu Suit Suit', 'Guru Randhawa'],
-  ['Naatu Naatu', 'Rahul Sipligunj, Kaala Bhairava'],
-  ['Zingaat', 'Ajay-Atul'],
-  ['Dilliwaali Girlfriend', 'Arijit Singh, Sunidhi Chauhan'],
-  ['Mauja Hi Mauja', 'Mika Singh'],
-  ['Kajra Re', 'Alisha Chinai, Shankar Mahadevan, Javed Ali'],
-  ['Sheila Ki Jawani', 'Sunidhi Chauhan'],
-  ['Lungi Dance', 'Yo Yo Honey Singh'],
-  ['Desi Girl', 'Vishal Dadlani, Sunidhi Chauhan, Shankar Mahadevan'],
-  ['Swag Se Swagat', 'Vishal Dadlani, Neha Bhasin'],
-  ['Jhoome Jo Pathaan', 'Arijit Singh'],
-  ['Raataan Lambiyan', 'Jubin Nautiyal, Asees Kaur'],
-  ['Apna Bana Le', 'Arijit Singh'],
-  ['Gerua', 'Arijit Singh, Antara Mitra'],
-  ['Ghungroo', 'Arijit Singh, Shilpa Rao'],
-];
-
-export const DIETARY = [
-  'No specific preferences',
-  'Vegetarian',
-  'Vegan',
-  'Jain',
-  'Gluten-free',
-  'Other — tell us in the notes',
-];
-
-export const PARTY_SIZES = ['1 (Just me)', '2', '3', '4', '5', '6+'];
+// Background music. Put your file at public/music/wedding.mp3 (or change src).
+// If the file is missing, the music button simply doesn't appear.
+export const MUSIC = { src: '/music/ReelAudio-38076.mp3', volume: 0.45, fadeMs: 2500 };

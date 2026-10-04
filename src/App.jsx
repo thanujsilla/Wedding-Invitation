@@ -6,17 +6,14 @@ import ScrollThread from './components/ScrollThread';
 import Hero from './components/Hero';
 import SaveTheDate from './components/SaveTheDate';
 import Countdown from './components/Countdown';
-import OurStory from './components/OurStory';
 import Venue from './components/Venue';
 import Festivities from './components/Festivities';
-import DressCode from './components/DressCode';
-import RSVPSection from './components/RSVPSection';
 import Footer from './components/Footer';
-import ThankYou from './components/ThankYou';
+import MusicPlayer from './components/MusicPlayer';
 
 export default function App() {
   const [opened, setOpened] = useState(false);
-  const [rsvp, setRsvp] = useState(null);
+  const [musicStart, setMusicStart] = useState(false);
 
   // The envelope owns the screen until opened: no scrolling underneath it.
   useEffect(() => {
@@ -31,18 +28,15 @@ export default function App() {
           <Hero opened={opened} />
           <SaveTheDate />
           <Countdown />
-          <OurStory />
           <Venue />
           <Festivities />
-          <DressCode />
-          <RSVPSection onSubmitted={setRsvp} />
           <Footer />
         </main>
       </div>
 
       {opened && <ScrollThread />}
-      <AnimatePresence>{!opened && <Envelope key="env" onOpen={() => setOpened(true)} />}</AnimatePresence>
-      <ThankYou data={rsvp} onClose={() => setRsvp(null)} />
+      <AnimatePresence>{!opened && <Envelope key="env" onStart={() => setMusicStart(true)} onOpen={() => setOpened(true)} />}</AnimatePresence>
+      <MusicPlayer start={musicStart} />
       <FloatingPetals />
     </>
   );

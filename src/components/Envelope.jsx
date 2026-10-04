@@ -43,7 +43,7 @@ const Flap = ({ side }) => (
   </div>
 );
 
-export default function Envelope({ onOpen }) {
+export default function Envelope({ onOpen, onStart }) {
   const [phase, setPhase] = useState('loading'); // loading → ready → opening
 
   useEffect(() => {
@@ -57,6 +57,7 @@ export default function Envelope({ onOpen }) {
   const open = () => {
     if (phase !== 'ready') return;
     setPhase('opening');
+    onStart?.(); // inside the tap, so browsers allow audio to start
     navigator.vibrate?.(20);
     const { w, h } = petals.size();
     petals.burst({ count: 70, x: w / 2, y: h / 2, spread: 1.1 });

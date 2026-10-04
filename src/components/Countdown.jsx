@@ -86,7 +86,7 @@ export default function Countdown() {
 
       <Reveal delay={0.3} className="cd-note">
         <Divider width={150} />
-        <p>{t.past ? 'The celebrations have begun — thank you for being part of them.' : '1 July 2026 · Chennai'}</p>
+        <p>{t.past ? 'The celebrations have begun — thank you for being part of them.' : '13 December 2026'}</p>
       </Reveal>
     </section>
   );

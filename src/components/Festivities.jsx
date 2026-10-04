@@ -38,26 +38,6 @@ function EventCard({ ev, i }) {
           “{ev.quote}”
         </motion.p>
 
-        {ev.dress && (
-          <div className="ev-dress">
-            <span className="eyebrow sm">Dress code</span>
-            <div className="dots">
-              {ev.dress.colors.map((c, k) => (
-                <motion.i
-                  key={c}
-                  style={{ background: c }}
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ type: 'spring', stiffness: 220, damping: 12, delay: 0.5 + k * 0.12 }}
-                />
-              ))}
-            </div>
-            <p className="ev-colors">{ev.dress.names}</p>
-            <p className="ev-style">{ev.dress.style}</p>
-          </div>
-        )}
-
         {ev.place && <p className="ev-place">{ev.place}</p>}
         {ev.maps && (
           <a className="btn btn-red btn-sm" href={ev.maps} target="_blank" rel="noreferrer">

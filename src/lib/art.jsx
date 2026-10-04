@@ -1,43 +1,57 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { GANESH } from '../config';
 
 /* ───────── Ornaments ───────── */
 
-export function Emblem({ size = 84 }) {
-  // Lotus + Om, drawn in thin line-art; strokes "draw" in on mount.
-  const petalsPath = [
-    'M50 70 C38 58 38 40 50 26 C62 40 62 58 50 70Z',
-    'M50 70 C32 66 24 48 28 34 C42 38 52 52 50 70Z',
-    'M50 70 C68 66 76 48 72 34 C58 38 48 52 50 70Z',
-    'M50 70 C26 72 14 58 12 46 C28 44 44 54 50 70Z',
-    'M50 70 C74 72 86 58 88 46 C72 44 56 54 50 70Z',
-  ];
+function GaneshDrawing() {
+  const line = { fill: 'none', stroke: '#6a3b2a', strokeWidth: 1.4, strokeLinecap: 'round', strokeLinejoin: 'round' };
   return (
-    <svg viewBox="0 0 100 100" width={size} height={size} className="emblem" aria-hidden>
+    <svg viewBox="0 0 100 118" className="ganesh-svg" role="img" aria-label="Lord Ganesha">
       <defs>
-        <radialGradient id="emGlow" cx="50%" cy="45%" r="50%">
-          <stop offset="0%" stopColor="#E8C878" stopOpacity=".45" />
-          <stop offset="100%" stopColor="#E8C878" stopOpacity="0" />
-        </radialGradient>
+        <radialGradient id="gnHalo" cx="50%" cy="38%" r="55%"><stop offset="0" stopColor="#fff2c4" /><stop offset="1" stopColor="#f1dfbf" stopOpacity="0" /></radialGradient>
       </defs>
-      <circle cx="50" cy="46" r="46" fill="url(#emGlow)" className="emblem-glow" />
-      <g fill="none" stroke="#5b4a44" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round">
-        {petalsPath.map((d, i) => (
-          <motion.path
-            key={i}
-            d={d}
-            initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ pathLength: 1, opacity: 1 }}
-            transition={{ duration: 1.6, delay: 0.2 + i * 0.12, ease: 'easeInOut' }}
-          />
-        ))}
-        <path d="M30 78 Q50 90 70 78" stroke="#B8924A" />
-        <path d="M22 72 Q50 94 78 72" stroke="#B8924A" opacity=".5" />
-      </g>
-      <text x="50" y="58" textAnchor="middle" fontSize="26" fill="#8F1D26" fontFamily="'Tiro Devanagari Hindi', serif">ॐ</text>
-      {[0, 1, 2, 3, 4, 5, 6].map((i) => (
-        <circle key={i} cx={50 + Math.cos((i / 6) * Math.PI - Math.PI) * 38} cy={46 + Math.sin((i / 6) * Math.PI - Math.PI) * 38} r="1.2" fill="#B8924A" className="emblem-dot" style={{ animationDelay: `${i * 0.25}s` }} />
-      ))}
+      <rect width="100" height="118" fill="url(#gnHalo)" />
+      <circle cx="50" cy="44" r="34" fill="none" stroke="#c9a04a" strokeWidth=".8" strokeDasharray="1.5 2.5" />
+      {/* ears */}
+      <path d="M36 38 C14 26 6 52 20 66 C28 70 34 60 36 52Z" fill="#f0c98f" {...line} />
+      <path d="M64 38 C86 26 94 52 80 66 C72 70 66 60 64 52Z" fill="#f0c98f" {...line} />
+      {/* body */}
+      <path d="M26 118 C26 92 36 82 50 82 C64 82 74 92 74 118Z" fill="#e9a35f" {...line} />
+      <circle cx="50" cy="100" r="14" fill="#f0b46d" {...line} />
+      <path d="M36 88 Q50 98 64 88" {...line} stroke="#c9a04a" strokeWidth="1.8" />
+      {/* head */}
+      <ellipse cx="50" cy="46" rx="17" ry="19" fill="#f0b46d" {...line} />
+      {/* crown */}
+      <path d="M34 34 L38 18 L44 26 L50 8 L56 26 L62 18 L66 34 C58 28 42 28 34 34Z" fill="#e3b94f" stroke="#8a5a14" strokeWidth="1.2" strokeLinejoin="round" />
+      <circle cx="50" cy="20" r="2.2" fill="#c23a47" /><circle cx="42" cy="28" r="1.5" fill="#c23a47" /><circle cx="58" cy="28" r="1.5" fill="#c23a47" />
+      {/* face */}
+      <path d="M50 36 V44" stroke="#c23a47" strokeWidth="2" strokeLinecap="round" />
+      <path d="M41 45 q3 -3 6 0 M53 45 q3 -3 6 0" {...line} />
+      {/* trunk */}
+      <path d="M50 50 C50 64 49 74 42 82 C37 87 31 82 36 77 C39 74 42 77 40 80" {...line} strokeWidth="7" stroke="#e9a35f" />
+      <path d="M50 50 C50 64 49 74 42 82 C37 87 31 82 36 77 C39 74 42 77 40 80" {...line} strokeWidth="1.2" />
+      {/* tusk */}
+      <path d="M57 58 C62 62 62 68 58 72" {...line} stroke="#fff6e4" strokeWidth="3.4" />
+      {/* lotus seat */}
+      {[-24, -12, 0, 12, 24].map((x, i) => (<path key={i} d={`M${50 + x} 118 q${-5} -8 0 -14 q5 6 0 14Z`} fill="#f4b8c4" stroke="#b5424c" strokeWidth=".8" />))}
     </svg>
+  );
+}
+
+export function Emblem() {
+  const [broken, setBroken] = useState(false);
+  return (
+    <motion.div className="ganesh" initial={{ opacity: 0, scale: 0.85, y: 10 }} animate={{ opacity: 1, scale: 1, y: 0 }} transition={{ duration: 1.4, ease: [0.22, 0.8, 0.24, 1] }}>
+      <span className="ganesh-halo" aria-hidden />
+      <div className="ganesh-frame">
+        {!broken ? (
+          <img className="ganesh-img" src={GANESH.src} alt="Lord Ganesha" onError={() => setBroken(true)} />
+        ) : (
+          <GaneshDrawing />
+        )}
+      </div>
+    </motion.div>
   );
 }
 

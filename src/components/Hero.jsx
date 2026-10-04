@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Emblem, CornerFlourish } from '../lib/art';
 import { ArrowDown } from '../lib/icons';
-import { COUPLE } from '../config';
+import { BLESSING_TELUGU, COUPLE } from '../config';
 
 const container = { hidden: {}, show: { transition: { staggerChildren: 0.07, delayChildren: 0.9 } } };
 const letter = {
@@ -17,7 +17,7 @@ function Name({ text }) {
   return (
     <motion.h1 className="hero-name" variants={container} aria-label={text}>
       {text.split('').map((c, i) => (
-        <motion.span key={i} variants={letter} aria-hidden style={{ display: 'inline-block' }}>{c}</motion.span>
+        <motion.span key={i} variants={letter} aria-hidden style={{ display: 'inline-block', whiteSpace: 'pre' }}>{c}</motion.span>
       ))}
     </motion.h1>
   );
@@ -36,10 +36,7 @@ export default function Hero({ opened }) {
 
       <motion.div initial="hidden" animate={state} className="hero-inner">
         <motion.div variants={fade(0.2)} className="hero-emblem">{opened && <Emblem />}</motion.div>
-        <motion.p variants={fade(0.5)} className="sloka">
-          ॥ श्री गणेशाय नमः ॥ वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ ।<br />
-          निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा ॥
-        </motion.p>
+        <motion.p variants={fade(0.5)} className="sloka" lang="te">{BLESSING_TELUGU}</motion.p>
         <motion.p variants={fade(0.7)} className="invite-line">
           With the blessings of Shri Ganesh and our beloved families, we joyfully invite you to celebrate the union of
         </motion.p>
