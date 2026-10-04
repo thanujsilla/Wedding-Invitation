@@ -3,17 +3,17 @@
 // ─────────────────────────────────────────────────────────────
 
 export const COUPLE = {
-  bride: 'Meenal',
-  groom: 'Avinash',
-  brideParents: 'Mr. & Mrs. Sharma',
-  groomParents: 'Mr. & Mrs. Patel',
+  bride: 'Yamini',
+  groom: 'Nayan Raju',
+  brideParents: 'Mr.Ravi Kumar & Mrs.Nagamani',
+  groomParents: 'Mr.Lokanatham & Mrs.ABCDEF',
 };
 
 // Countdown target (IST). NOTE: if this moment has already passed the
 // countdown shows zeros and a gentle "celebrations have begun" line.
-export const WEDDING_DATE = new Date('2026-07-01T11:00:00+05:30');
+export const WEDDING_DATE = new Date('2026-12-13T11:00:00+05:30');
 
-export const SAVE_THE_DATE = { month: 'JULY', day: '01', year: '2026' };
+export const SAVE_THE_DATE = { month: 'DECEMEBR', day: '13', year: '2026' };
 
 export const VENUE = {
   name: 'Rajalakshmi Kalyana Mandapam',
